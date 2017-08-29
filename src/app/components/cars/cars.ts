@@ -6,17 +6,17 @@ export let cars = [
         year: 2011,
         maxSpeed: 200,
         isAutomatic: false,
-        engine: 1.2,
+        engine: 'Diesel',
         numberOfDoors: 5,
     },
     {
-        id: 1,
+        id: 2,
         mark: 'Peugeot',
         model: '307',
         year: 206,
         maxSpeed: 220,
         isAutomatic: false,
-        engine: 1.6,
+        engine: 'Petro',
         numberOfDoors: 3,
     }
 ];

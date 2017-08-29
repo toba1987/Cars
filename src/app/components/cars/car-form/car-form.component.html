@@ -1,0 +1,75 @@
+<form #carForm="ngForm"  (ngSubmit)="addCar(newCar); carForm.reset()">
+    <div class="form-group">
+        <label>Mark</label>
+        <input name="mark" #mark="ngModel" [(ngModel)]="newCar.mark" minlength="3" required  type="text" class="form-control">
+
+        <div *ngIf="mark.invalid && (mark.dirty || mark.touched)" class="alert alert-danger">
+            <div *ngIf="mark.errors.required">
+                Mark is required.
+            </div>
+            <div *ngIf="mark.errors.minlength">
+                Mark must be at least 3 characters long.
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Model</label>
+        <input name="model" #model="ngModel" [(ngModel)]="newCar.model" minlength="2"  required  type="text" class="form-control">
+        <div *ngIf="model.invalid && (model.dirty || model.touched)" class="alert alert-danger">
+            <div *ngIf="model.errors.required">
+                Model is required.
+            </div>
+            <div *ngIf="model.errors.minlength">
+                Model must be at least 2 characters long.
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Year</label>
+        <select name="year" #year="ngModel" [(ngModel)]="newCar.year">
+            <option  *ngFor="let releaseDate of releaseDates" value="{{ releaseDate }}">{{ releaseDate }}</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Max Speed</label>
+        <input name="maxSpeed" #maxSpeed="ngModel" [(ngModel)]="newCar.maxSpeed"  required  type="number" class="form-control">
+        <div *ngIf="maxSpeed.invalid && (maxSpeed.dirty || maxSpeed.touched)" class="alert alert-danger">
+            <div *ngIf="maxSpeed.errors.required">
+                max Speed is required.
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Menjac</label>
+        <input class="form-control" type="radio" name="isAutomatic" #isAutomatic="ngModel" [(ngModel)]="newCar.isAutomatic" value="true"  checked> Automatski<br>
+        <input class="form-control" type="radio" name="isAutomatic" #isAutomatic="ngModel" [(ngModel)]="newCar.isAutomatic" value="false" > Manuelan<br>
+
+    </div>
+
+    <div class="form-group">
+        <label>Engine</label>
+        <input class="form-control" type="radio" name="engine" #engine="ngModel" [(ngModel)]="newCar.engine" value="diesel" checked>Diesel<br>
+        <input class="form-control" type="radio" name="engine" #engine="ngModel" [(ngModel)]="newCar.engine" value="petrol">Petrol<br>
+        <input class="form-control" type="radio" name="engine" #engine="ngModel" [(ngModel)]="newCar.engine" value="electric">Electric<br>
+        <input class="form-control" type="radio" name="engine" #engine="ngModel" [(ngModel)]="newCar.engine" value="hybrid">Hybrid<br>
+    </div>
+
+    <div class="form-group">
+        <label>Number Of Doors</label>
+        <input name="numberOfDoors" #numberOfDoors="ngModel" [(ngModel)]="newCar.numberOfDoors" required  type="number" class="form-control">
+        <div *ngIf="numberOfDoors.invalid && (numberOfDoors.dirty || numberOfDoors.touched)" class="alert alert-danger">
+            <div *ngIf="numberOfDoors.errors.required">
+                Model is required.
+            </div>
+
+        </div>
+    </div>
+    <div class="input-group col-md pl-0 my-lg-4 my-2">
+        <button type="button" class="btn btn-primary" [disabled]="carForm.form.pristine" (click)="carForm.reset()">Reset</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!carForm.valid" >Add Car</button>
+    </div>
+    <!--    /*firstName.value, lastName.value, email.value -->
+</form>
